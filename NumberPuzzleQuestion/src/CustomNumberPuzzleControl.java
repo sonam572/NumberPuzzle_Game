@@ -34,29 +34,48 @@ class CustomNumberPuzzleControl extends NumberPuzzleControl {
 	public int handleButtonClicked(NumberPuzzleGame game){
 		int emptyCellId = game.getEmptyCellId();
 		Button buttonClicked = game.getButtonClicked();
-		Button[] buttons = game.getButtons();
+		Button[] buttons = game.getButtons();{
+		if(buttonClicked.action(null, buttonClicked)) {
+		if(emptyCellId<15) {
+			
+		swapButton(buttons[emptyCellId],buttonClicked);
 		
-		//Your logic here		
-		
+		}}}
 		return emptyCellId;
 
 	}
 	public int[] getRandomNumbersForGrid() {
 		int arr[] = new int[15];
-		
-		//Your logic here
+		int i=0;
+		while(i<15){
 		int a = getRandomNumber();
-		
-		
+		if(a<=15) {
+			for(int j=0;j<i;j++) {
+				if(arr[j]!=a) {
+					arr[i]=a;
+					i++;
+				}
+			}
+						
+		}
+		}
 		return arr;
 	}
 	public boolean checkForWinner(Button[] buttons)
 	{
 		boolean winner = true;
 		
-		// Your Logic here
-		getIntegerArrayOfButtonIds(buttons);
-
-		return winner;
+		int []arr=getIntegerArrayOfButtonIds(buttons);
+		int flag=0;
+for(int i=0;i<15;i++) {
+	if(arr[i]==i) {
+		flag++;
 	}
 }
+if(flag==15) {
+		return winner;
+	}
+else {
+	return false;
+}
+}}
